@@ -1,0 +1,493 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AnimaLuvDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Animal">
+          <Key>
+            <PropertyRef Name="AnimalID" />
+          </Key>
+          <Property Name="AnimalID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="ColorID" />
+          </Key>
+          <Property Name="ColorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomOrder">
+          <Key>
+            <PropertyRef Name="CustomOrderID" />
+          </Key>
+          <Property Name="CustomOrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AnimalID" Type="int" Nullable="false" />
+          <Property Name="SizeID" Type="int" Nullable="false" />
+          <Property Name="ColorID" Type="int" Nullable="false" />
+          <Property Name="MaterialID" Type="int" Nullable="false" />
+          <Property Name="StuffingID" Type="int" Nullable="false" />
+          <Property Name="OutfitID" Type="int" Nullable="false" />
+          <Property Name="OrderDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="MaterialID" />
+          </Key>
+          <Property Name="MaterialID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BabySafe" Type="bit" />
+        </EntityType>
+        <EntityType Name="Outfit">
+          <Key>
+            <PropertyRef Name="OutfitID" />
+          </Key>
+          <Property Name="OutfitID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="smallmoney" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Size">
+          <Key>
+            <PropertyRef Name="SizeID" />
+          </Key>
+          <Property Name="SizeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stuffing">
+          <Key>
+            <PropertyRef Name="StuffingID" />
+          </Key>
+          <Property Name="StuffingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BabySafe" Type="bit" />
+        </EntityType>
+        <Association Name="FK_dbo_CustomOrder_dbo_Animal_AnimalID">
+          <End Role="Animal" Type="Self.Animal" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CustomOrder" Type="Self.CustomOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animal">
+              <PropertyRef Name="AnimalID" />
+            </Principal>
+            <Dependent Role="CustomOrder">
+              <PropertyRef Name="AnimalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CustomOrder_dbo_Color_ColorID">
+          <End Role="Color" Type="Self.Color" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CustomOrder" Type="Self.CustomOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Color">
+              <PropertyRef Name="ColorID" />
+            </Principal>
+            <Dependent Role="CustomOrder">
+              <PropertyRef Name="ColorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CustomOrder_dbo_Material_MaterialID">
+          <End Role="Material" Type="Self.Material" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CustomOrder" Type="Self.CustomOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="MaterialID" />
+            </Principal>
+            <Dependent Role="CustomOrder">
+              <PropertyRef Name="MaterialID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CustomOrder_dbo_Outfit_OutfitID">
+          <End Role="Outfit" Type="Self.Outfit" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CustomOrder" Type="Self.CustomOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Outfit">
+              <PropertyRef Name="OutfitID" />
+            </Principal>
+            <Dependent Role="CustomOrder">
+              <PropertyRef Name="OutfitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CustomOrder_dbo_Size_SizeID">
+          <End Role="Size" Type="Self.Size" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CustomOrder" Type="Self.CustomOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Size">
+              <PropertyRef Name="SizeID" />
+            </Principal>
+            <Dependent Role="CustomOrder">
+              <PropertyRef Name="SizeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CustomOrder_dbo_Stuffing_StuffingID">
+          <End Role="Stuffing" Type="Self.Stuffing" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CustomOrder" Type="Self.CustomOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stuffing">
+              <PropertyRef Name="StuffingID" />
+            </Principal>
+            <Dependent Role="CustomOrder">
+              <PropertyRef Name="StuffingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AnimaLuvDataModelStoreContainer">
+          <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Animal" EntityType="Self.Animal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Color" EntityType="Self.Color" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomOrder" EntityType="Self.CustomOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Material" EntityType="Self.Material" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Outfit" EntityType="Self.Outfit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Size" EntityType="Self.Size" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stuffing" EntityType="Self.Stuffing" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_CustomOrder_dbo_Animal_AnimalID" Association="Self.FK_dbo_CustomOrder_dbo_Animal_AnimalID">
+            <End Role="Animal" EntitySet="Animal" />
+            <End Role="CustomOrder" EntitySet="CustomOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CustomOrder_dbo_Color_ColorID" Association="Self.FK_dbo_CustomOrder_dbo_Color_ColorID">
+            <End Role="Color" EntitySet="Color" />
+            <End Role="CustomOrder" EntitySet="CustomOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CustomOrder_dbo_Material_MaterialID" Association="Self.FK_dbo_CustomOrder_dbo_Material_MaterialID">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="CustomOrder" EntitySet="CustomOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CustomOrder_dbo_Outfit_OutfitID" Association="Self.FK_dbo_CustomOrder_dbo_Outfit_OutfitID">
+            <End Role="Outfit" EntitySet="Outfit" />
+            <End Role="CustomOrder" EntitySet="CustomOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CustomOrder_dbo_Size_SizeID" Association="Self.FK_dbo_CustomOrder_dbo_Size_SizeID">
+            <End Role="Size" EntitySet="Size" />
+            <End Role="CustomOrder" EntitySet="CustomOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CustomOrder_dbo_Stuffing_StuffingID" Association="Self.FK_dbo_CustomOrder_dbo_Stuffing_StuffingID">
+            <End Role="Stuffing" EntitySet="Stuffing" />
+            <End Role="CustomOrder" EntitySet="CustomOrder" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AnimaLuvDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Animal">
+          <Key>
+            <PropertyRef Name="AnimalID" />
+          </Key>
+          <Property Name="AnimalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CustomOrders" Relationship="Self.FK_dbo_CustomOrder_dbo_Animal_AnimalID" FromRole="Animal" ToRole="CustomOrder" />
+        </EntityType>
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="ColorID" />
+          </Key>
+          <Property Name="ColorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CustomOrders" Relationship="Self.FK_dbo_CustomOrder_dbo_Color_ColorID" FromRole="Color" ToRole="CustomOrder" />
+        </EntityType>
+        <EntityType Name="CustomOrder">
+          <Key>
+            <PropertyRef Name="CustomOrderID" />
+          </Key>
+          <Property Name="CustomOrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AnimalID" Type="Int32" Nullable="false" />
+          <Property Name="SizeID" Type="Int32" Nullable="false" />
+          <Property Name="ColorID" Type="Int32" Nullable="false" />
+          <Property Name="MaterialID" Type="Int32" Nullable="false" />
+          <Property Name="StuffingID" Type="Int32" Nullable="false" />
+          <Property Name="OutfitID" Type="Int32" Nullable="false" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Animal" Relationship="Self.FK_dbo_CustomOrder_dbo_Animal_AnimalID" FromRole="CustomOrder" ToRole="Animal" />
+          <NavigationProperty Name="Color" Relationship="Self.FK_dbo_CustomOrder_dbo_Color_ColorID" FromRole="CustomOrder" ToRole="Color" />
+          <NavigationProperty Name="Material" Relationship="Self.FK_dbo_CustomOrder_dbo_Material_MaterialID" FromRole="CustomOrder" ToRole="Material" />
+          <NavigationProperty Name="Outfit" Relationship="Self.FK_dbo_CustomOrder_dbo_Outfit_OutfitID" FromRole="CustomOrder" ToRole="Outfit" />
+          <NavigationProperty Name="Size" Relationship="Self.FK_dbo_CustomOrder_dbo_Size_SizeID" FromRole="CustomOrder" ToRole="Size" />
+          <NavigationProperty Name="Stuffing" Relationship="Self.FK_dbo_CustomOrder_dbo_Stuffing_StuffingID" FromRole="CustomOrder" ToRole="Stuffing" />
+        </EntityType>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="MaterialID" />
+          </Key>
+          <Property Name="MaterialID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BabySafe" Type="Boolean" />
+          <NavigationProperty Name="CustomOrders" Relationship="Self.FK_dbo_CustomOrder_dbo_Material_MaterialID" FromRole="Material" ToRole="CustomOrder" />
+        </EntityType>
+        <EntityType Name="Outfit">
+          <Key>
+            <PropertyRef Name="OutfitID" />
+          </Key>
+          <Property Name="OutfitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+          <NavigationProperty Name="CustomOrders" Relationship="Self.FK_dbo_CustomOrder_dbo_Outfit_OutfitID" FromRole="Outfit" ToRole="CustomOrder" />
+        </EntityType>
+        <EntityType Name="Size">
+          <Key>
+            <PropertyRef Name="SizeID" />
+          </Key>
+          <Property Name="SizeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CustomOrders" Relationship="Self.FK_dbo_CustomOrder_dbo_Size_SizeID" FromRole="Size" ToRole="CustomOrder" />
+        </EntityType>
+        <EntityType Name="Stuffing">
+          <Key>
+            <PropertyRef Name="StuffingID" />
+          </Key>
+          <Property Name="StuffingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BabySafe" Type="Boolean" />
+          <NavigationProperty Name="CustomOrders" Relationship="Self.FK_dbo_CustomOrder_dbo_Stuffing_StuffingID" FromRole="Stuffing" ToRole="CustomOrder" />
+        </EntityType>
+        <Association Name="FK_dbo_CustomOrder_dbo_Animal_AnimalID">
+          <End Role="Animal" Type="Self.Animal" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CustomOrder" Type="Self.CustomOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animal">
+              <PropertyRef Name="AnimalID" />
+            </Principal>
+            <Dependent Role="CustomOrder">
+              <PropertyRef Name="AnimalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CustomOrder_dbo_Color_ColorID">
+          <End Role="Color" Type="Self.Color" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CustomOrder" Type="Self.CustomOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Color">
+              <PropertyRef Name="ColorID" />
+            </Principal>
+            <Dependent Role="CustomOrder">
+              <PropertyRef Name="ColorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CustomOrder_dbo_Material_MaterialID">
+          <End Role="Material" Type="Self.Material" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CustomOrder" Type="Self.CustomOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="MaterialID" />
+            </Principal>
+            <Dependent Role="CustomOrder">
+              <PropertyRef Name="MaterialID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CustomOrder_dbo_Outfit_OutfitID">
+          <End Role="Outfit" Type="Self.Outfit" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CustomOrder" Type="Self.CustomOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Outfit">
+              <PropertyRef Name="OutfitID" />
+            </Principal>
+            <Dependent Role="CustomOrder">
+              <PropertyRef Name="OutfitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CustomOrder_dbo_Size_SizeID">
+          <End Role="Size" Type="Self.Size" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CustomOrder" Type="Self.CustomOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Size">
+              <PropertyRef Name="SizeID" />
+            </Principal>
+            <Dependent Role="CustomOrder">
+              <PropertyRef Name="SizeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CustomOrder_dbo_Stuffing_StuffingID">
+          <End Role="Stuffing" Type="Self.Stuffing" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CustomOrder" Type="Self.CustomOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stuffing">
+              <PropertyRef Name="StuffingID" />
+            </Principal>
+            <Dependent Role="CustomOrder">
+              <PropertyRef Name="StuffingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AnimaLuvDataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__RefactorLog" EntityType="Self.C__RefactorLog" />
+          <EntitySet Name="Animals" EntityType="Self.Animal" />
+          <EntitySet Name="Colors" EntityType="Self.Color" />
+          <EntitySet Name="CustomOrders" EntityType="Self.CustomOrder" />
+          <EntitySet Name="Materials" EntityType="Self.Material" />
+          <EntitySet Name="Outfits" EntityType="Self.Outfit" />
+          <EntitySet Name="Sizes" EntityType="Self.Size" />
+          <EntitySet Name="Stuffings" EntityType="Self.Stuffing" />
+          <AssociationSet Name="FK_dbo_CustomOrder_dbo_Animal_AnimalID" Association="Self.FK_dbo_CustomOrder_dbo_Animal_AnimalID">
+            <End Role="Animal" EntitySet="Animals" />
+            <End Role="CustomOrder" EntitySet="CustomOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CustomOrder_dbo_Color_ColorID" Association="Self.FK_dbo_CustomOrder_dbo_Color_ColorID">
+            <End Role="Color" EntitySet="Colors" />
+            <End Role="CustomOrder" EntitySet="CustomOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CustomOrder_dbo_Material_MaterialID" Association="Self.FK_dbo_CustomOrder_dbo_Material_MaterialID">
+            <End Role="Material" EntitySet="Materials" />
+            <End Role="CustomOrder" EntitySet="CustomOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CustomOrder_dbo_Outfit_OutfitID" Association="Self.FK_dbo_CustomOrder_dbo_Outfit_OutfitID">
+            <End Role="Outfit" EntitySet="Outfits" />
+            <End Role="CustomOrder" EntitySet="CustomOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CustomOrder_dbo_Size_SizeID" Association="Self.FK_dbo_CustomOrder_dbo_Size_SizeID">
+            <End Role="Size" EntitySet="Sizes" />
+            <End Role="CustomOrder" EntitySet="CustomOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CustomOrder_dbo_Stuffing_StuffingID" Association="Self.FK_dbo_CustomOrder_dbo_Stuffing_StuffingID">
+            <End Role="Stuffing" EntitySet="Stuffings" />
+            <End Role="CustomOrder" EntitySet="CustomOrders" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AnimaLuvDataModelStoreContainer" CdmEntityContainer="AnimaLuvDataEntities">
+          <EntitySetMapping Name="C__RefactorLog">
+            <EntityTypeMapping TypeName="AnimaLuvDataModel.C__RefactorLog">
+              <MappingFragment StoreEntitySet="__RefactorLog">
+                <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Animals">
+            <EntityTypeMapping TypeName="AnimaLuvDataModel.Animal">
+              <MappingFragment StoreEntitySet="Animal">
+                <ScalarProperty Name="AnimalID" ColumnName="AnimalID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Colors">
+            <EntityTypeMapping TypeName="AnimaLuvDataModel.Color">
+              <MappingFragment StoreEntitySet="Color">
+                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomOrders">
+            <EntityTypeMapping TypeName="AnimaLuvDataModel.CustomOrder">
+              <MappingFragment StoreEntitySet="CustomOrder">
+                <ScalarProperty Name="CustomOrderID" ColumnName="CustomOrderID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AnimalID" ColumnName="AnimalID" />
+                <ScalarProperty Name="SizeID" ColumnName="SizeID" />
+                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+                <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+                <ScalarProperty Name="StuffingID" ColumnName="StuffingID" />
+                <ScalarProperty Name="OutfitID" ColumnName="OutfitID" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Materials">
+            <EntityTypeMapping TypeName="AnimaLuvDataModel.Material">
+              <MappingFragment StoreEntitySet="Material">
+                <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BabySafe" ColumnName="BabySafe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Outfits">
+            <EntityTypeMapping TypeName="AnimaLuvDataModel.Outfit">
+              <MappingFragment StoreEntitySet="Outfit">
+                <ScalarProperty Name="OutfitID" ColumnName="OutfitID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sizes">
+            <EntityTypeMapping TypeName="AnimaLuvDataModel.Size">
+              <MappingFragment StoreEntitySet="Size">
+                <ScalarProperty Name="SizeID" ColumnName="SizeID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stuffings">
+            <EntityTypeMapping TypeName="AnimaLuvDataModel.Stuffing">
+              <MappingFragment StoreEntitySet="Stuffing">
+                <ScalarProperty Name="StuffingID" ColumnName="StuffingID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BabySafe" ColumnName="BabySafe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

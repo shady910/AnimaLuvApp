@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f5a002190ba0495396d7692d4a890be6" Name="Diagram1">
+        <EntityTypeShape EntityType="AnimaLuvDataModel.C__RefactorLog" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnimaLuvDataModel.Animal" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnimaLuvDataModel.Color" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnimaLuvDataModel.CustomOrder" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnimaLuvDataModel.Material" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnimaLuvDataModel.Outfit" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnimaLuvDataModel.Size" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnimaLuvDataModel.Stuffing" Width="1.5" PointX="0.75" PointY="15.125" IsExpanded="true" />
+        <AssociationConnector Association="AnimaLuvDataModel.FK_dbo_CustomOrder_dbo_Animal_AnimalID" ManuallyRouted="false" />
+        <AssociationConnector Association="AnimaLuvDataModel.FK_dbo_CustomOrder_dbo_Color_ColorID" ManuallyRouted="false" />
+        <AssociationConnector Association="AnimaLuvDataModel.FK_dbo_CustomOrder_dbo_Material_MaterialID" ManuallyRouted="false" />
+        <AssociationConnector Association="AnimaLuvDataModel.FK_dbo_CustomOrder_dbo_Outfit_OutfitID" ManuallyRouted="false" />
+        <AssociationConnector Association="AnimaLuvDataModel.FK_dbo_CustomOrder_dbo_Size_SizeID" ManuallyRouted="false" />
+        <AssociationConnector Association="AnimaLuvDataModel.FK_dbo_CustomOrder_dbo_Stuffing_StuffingID" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

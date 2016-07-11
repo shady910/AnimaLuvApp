@@ -58,4 +58,19 @@
   <ItemGroup>
     <Folder Include="Properties" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="Color.sql" />
+    <Build Include="Outfit.sql" />
+    <Build Include="Animal.sql" />
+    <Build Include="Material.sql" />
+    <Build Include="Stuffing.sql" />
+    <Build Include="CustomOrder.sql" />
+    <Build Include="Size.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="AnimaLuvData.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script.PostDeployment1.sql" />
+  </ItemGroup>
 </Project>
