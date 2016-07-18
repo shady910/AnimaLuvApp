@@ -22,7 +22,7 @@ namespace AnimaLuvApp.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "We love to hear from you!";
 
             return View();
         }

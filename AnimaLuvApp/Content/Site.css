@@ -1,24 +1,73 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    background-image:url(/Content/pattern1.jpg);
+    background-repeat:repeat;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    background-color:white;
+    position: absolute;
+    left:15%;
+    right:15%;
+    width:70%;
+    top: 50px;
+    bottom: 0;
+    overflow:auto;
 }
-
+.imgBar{
+    width:auto;
+    max-height:200px;
+}
+.banner{
+    color:#222222;
+    padding-left: 30px;
+    padding-right:30px;
+    padding-bottom:15px;
+  background-color: #eeeeee;
+}
+.btn{
+    
+    background-color:orange;
+    border-color:#bb4e00;
+}
+.btn:hover,
+.btn:focus,
+.btn:active{
+    
+    background-color:#5ecab1;
+    border-color:#509887;
+}
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
 .dl-horizontal dt {
     white-space: normal;
 }
-
+.row{
+    
+    padding-left: 15px;
+    padding-right: 15px;
+}
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
     max-width: 280px;
 }
+html, body {
+    height: 100%;
+}
+img {
+  height:auto;
+  width:calc(100%/3);
+}
+
+
+
+

@@ -7,7 +7,7 @@
     [MaterialID] INT NOT NULL, 
     [StuffingID] INT NOT NULL, 
     [OutfitID] INT NOT NULL, 
-    [OrderDate] DATETIME NOT NULL, 
+    [OrderDate] DATETIME2 NOT NULL, 
     PRIMARY KEY CLUSTERED ([CustomOrderID] ASC),
     CONSTRAINT [FK_dbo.CustomOrder_dbo.Animal_AnimalID] FOREIGN KEY ([AnimalID]) 
         REFERENCES [dbo].[Animal] ([AnimalID]) ON DELETE CASCADE,

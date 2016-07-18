@@ -57,6 +57,7 @@ namespace AnimaLuvApp.Controllers
         {
             if (ModelState.IsValid)
             {
+                customOrder.OrderDate = DateTime.Now;
                 db.CustomOrders.Add(customOrder);
                 db.SaveChanges();
                 return RedirectToAction("Index");
