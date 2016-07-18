@@ -1,0 +1,25 @@
+﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Add New Role</h2>
+
+
+<section class="mainContent">
+    @using (Html.BeginForm())
+{   <fieldset>
+        <legend>Create New Role</legend>
+        <p>
+            <label for="RoleName" class="field">Enter New Role Name: </label>@Html.EditorFor(m => m.Name)
+
+        </p>
+
+        <p><input type="submit" value="Create Role" class="btn btn-default" /></p>
+    </fieldset>
+
+}
+</section>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

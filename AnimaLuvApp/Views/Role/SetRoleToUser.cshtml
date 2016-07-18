@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "SetRoleToUser";
+}
+
+<h2>Assign User to Role</h2>
+
+
+    @Html.ActionLink("Create New Role", "Create")<br/>
+
+<section class="mainContent">
+@using (Html.BeginForm("SetRoleToUser", "Role"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Assign User Role</legend>
+        <p>
+            <label for="UserName" class="field">User Name:</label>@Html.Editor("UserName")
+            <label for="RoleName" class="field">Role Name:</label>@Html.DropDownList("RoleName", (
+        IEnumerable<SelectListItem>)ViewBag.Roles, "Select Role")
+        </p>
+
+        <p><input type="submit" value="Save" class="btn btn-default" /></p>
+    </fieldset>
+}</section>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

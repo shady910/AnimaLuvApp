@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
+@{
+    ViewBag.Title = "Index";
+    var grid = new WebGrid(source: Model, rowsPerPage: 10);
+}
+
+<h2>Available Roles</h2>
+
+@Html.ActionLink("Create New Role", "Create", "Role")<br/>
+@Html.ActionLink("Assign User to Role", "SetRoleToUser")
+
+
+<section class="mainContent">
+    @grid.GetHtml(
+  tableStyle: "grid",
+  headerStyle: "Read",
+  alternatingRowStyle: "alt",
+  columns: grid.Columns(
+  grid.Column("Name", header: "Role")
+     )
+        )
+</section>
