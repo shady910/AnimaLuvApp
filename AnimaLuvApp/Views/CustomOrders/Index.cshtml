@@ -12,30 +12,15 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Customer
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OrderDate)
+            Date Ordered
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Animal.Name)
+            View Order
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Color.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Material.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Outfit.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Size.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Stuffing.Name)
-        </th>
-        <th></th>
+        <th>Make Changes</th>
     </tr>
 
 @foreach (var item in Model) {
@@ -47,26 +32,11 @@
             @Html.DisplayFor(modelItem => item.OrderDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Animal.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Color.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Material.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Outfit.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Size.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Stuffing.Name)
+            @Html.ActionLink("Details", "Details", new { id = item.CustomOrderID })
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.CustomOrderID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CustomOrderID }) |
+            
             @Html.ActionLink("Delete", "Delete", new { id=item.CustomOrderID })
         </td>
     </tr>
