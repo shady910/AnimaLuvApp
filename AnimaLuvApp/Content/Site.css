@@ -1,5 +1,5 @@
 ﻿body {
-    background-image:url(/Content/pattern1.jpg);
+    background-image:url(/Content/warm-amber-patterns-part-2-7.jpg);
     background-repeat:repeat;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
@@ -29,7 +29,7 @@
     padding-left: 30px;
     padding-right:30px;
     padding-bottom:15px;
-  background-color: #eeeeee;
+  background-color: white;
 }
 .btn{
     
@@ -86,6 +86,10 @@ legend{
 .mainContent{
     padding-bottom:20px;
     padding-top:20px;
+}
+.navbar{
+    background-color:white;
+    box-shadow:0px 0px 0px 8px rgba(0,0,0,0.3);
 }
 
 
